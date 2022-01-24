@@ -27,7 +27,6 @@ Original Project Planning Doc - https://docs.google.com/document/d/1u40Qy18w2PqT
 
 ### Ways you could contribute
 - Work on the front end views
-- fix bug with auto increment for pod integers when they're available in db(probably need another wrapper)
 - add some more endpoints that we need
 - integrate postgres db on aws
 - add security and user authentication

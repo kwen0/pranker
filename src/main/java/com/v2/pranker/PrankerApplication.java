@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 
 @SpringBootApplication
-public class PrankerApplication implements CommandLineRunner {
+public class PrankerApplication {
 	private static final Logger logger = LoggerFactory.getLogger(PrankerApplication.class);
 
 	@Autowired
@@ -21,11 +21,4 @@ public class PrankerApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication.run(PrankerApplication.class, args);
 	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		List<Pod> podcasts = this.podRepo.getAllPodcasts();
-		podcasts.forEach(podcast -> logger.info(podcast.toString()));
-	}
-
 }

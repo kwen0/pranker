@@ -9,13 +9,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Pod {
-    private final int id;
+    private int id;
     private String episode_title;
     private String name;
     private double avg_rating;
 
     public Pod() {
-        this.id = new Random().nextInt();
     }
 
     public Pod(int id, String episode_title, String name, double avg_rating) {
@@ -51,6 +50,10 @@ public class Pod {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
