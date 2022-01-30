@@ -1,4 +1,5 @@
 import React from "react";
+import PodcastList from "./PodcastList";
 
 class Landing extends React.Component {
     constructor(props) {
@@ -47,13 +48,7 @@ class Landing extends React.Component {
 
                 <p>Search for a podcast title below to update the results and see specific podcast rankings!</p>
                 <input type="text" placeholder="Search Podcast Title"></input>
-                <ol>
-                    {podcasts.map(podcast => (
-                        <li key={podcast.id}>
-                            {podcast.name} {podcast.episodeTitle} {podcast.avgRating}
-                        </li>
-                    ))}
-                </ol>
+                <PodcastList podcasts={podcasts}></PodcastList>
                 </div>;
         }
     }
