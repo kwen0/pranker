@@ -27,6 +27,15 @@ public class PodJdbcRepository {
         );
     }
 
+    public Pod getPodcastById(int id) {
+        return jdbcTemplate.queryForObject(
+                "select * from POD where id = ?",
+                new Object[]{id},
+                new int[]{Types.INTEGER},
+                new BeanPropertyRowMapper<>(Pod.class)
+        );
+    }
+
     public boolean addPodcast(int id, PodcastRequest pod_request) {
         return jdbcTemplate.update(
                 "insert into pod values (?, ?, ?, ?)",
