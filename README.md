@@ -6,12 +6,12 @@ Original Project Planning Doc - https://docs.google.com/document/d/1u40Qy18w2PqT
 
 ### Technologies
 - Client
-    - TBD...
+    - React
 - Server 
     - [Spring Boot](https://spring.io/projects/spring-boot): Spring based framework for developing stand-alone java apps
-        - Postgres: open source java database, usually embedded in java apps
-        - view the pom.xml file for more info on what dependencies we use in this spring app
-    - 
+        - look at pom.xml to view all packages needed to build Pranker
+    - Postgres
+        - look at package.json to view everything needed to build frontend
 
 ### Setup Application
 1. Clone repo `git clone git@github.com:chumomega/pranker.git`
@@ -28,13 +28,15 @@ Original Project Planning Doc - https://docs.google.com/document/d/1u40Qy18w2PqT
 - `brew install postgres`
 - `brew services start postgresql` to start postgres
 - psql postgres
-- 
+- google the rest about creating users and shit
 
 ### Ways you could contribute
-- Work on the front end views
-- add some more endpoints that we need
-- integrate postgres db on aws
-- add security and user authentication
+- add user auth screen
+- add form for users to add new podcast
+- add modal to present podcast in a user friendly way
+- add button to allow users to add a new rating
+- add form for users to add rating
+- ...
 
 
 
