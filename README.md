@@ -27,9 +27,87 @@ Original Project Planning Doc - https://docs.google.com/document/d/1u40Qy18w2PqT
 ##### DB Setup
 - `brew install postgres`
 - `brew services start postgresql` to start postgres
-- psql postgres
-- google the rest about creating users and shit
+- `psql postgres`
+- `create user main_pranker;`
+- `create role app with superuser;`
+- `GRANT app to main_pranker;`
+- `create database pranker;`
+- `\q` `psql -U main_pranker -d pranker`
+- to view tables: `select * from information_schema.tables;`
+- create tables:
+```
+SELECT 
+   table_name, 
+   column_name, 
+   data_type 
+FROM 
+   information_schema.columns
+WHERE 
+   table_name = 'pod';
+```
+```
+create table IF NOT EXISTS pod
+ (
+    id integer not null,
+    episode_title varchar(255) not null,
+    name varchar(255) not null,
+    avg_rating numeric not null,
+    primary key(id)
+ );
+```
+```
+create table IF NOT EXISTS pranker
+ (
+    id integer not null,
+    name varchar(255) not null,
+    phone_num bigint not null,
+    email varchar(255) not null,
+    password varchar(255) not null,
+    primary key(id)
+ );
+```
+```
+create table IF NOT EXISTS ratings
+ (
+    id integer not null,
+    user_id integer not null,
+    pod_id integer not null,
+    rating numeric not null,
+    comment varchar(255) not null,
+    primary key(id),
+    foreign key(user_id) references pranker(id),
+    foreign key(pod_id) references pod(id)
+ );
+```
+- enter dummy data: 
+```
+insert into pod
+values(1,'#1005', 'JRE Podcast', 4.2);
+insert into pod
+values(2,'#1006', 'JRE Podcast', 3.9);
+insert into pod
+values(3,'#1007', 'JRE Podcast', 4.7);
 
+insert into pranker
+values(999, 'Chum Chum Oko', 6166166161, 'fakenews@gmail.com', 'password101');
+insert into pranker
+values(998, 'Bobby Bitch', 9199199191, 'fakenews2@gmail.com', 'password101');
+
+insert into ratings
+values(1, 999, 1, 5, 'horse dewormer and vitamin c');
+insert into ratings
+values(2, 998, 1, 3, 'some bullshit');
+
+insert into ratings
+values(3, 999, 2, 5, 'cool!');
+insert into ratings
+values(4, 998, 2, 3, 'average at best');
+
+insert into ratings
+values(5, 999, 3, 4, 'fauci and rhonda patrick');
+insert into ratings
+values(6, 998, 3, 4, 'fake doctors and fake news! deplatform this guy');
+```
 ### Ways you could contribute
 - add user auth screen
 - add form for users to add new podcast
