@@ -108,6 +108,12 @@ values(5, 999, 3, 4, 'fauci and rhonda patrick');
 insert into ratings
 values(6, 998, 3, 4, 'fake doctors and fake news! deplatform this guy');
 ```
+##### Troubleshooting
+- If you cannot connect to the server, download [PGAdmin](https://www.pgadmin.org/download/)
+- Click on connect server and make sure it looks like the below: 
+<img width="556" alt="pgadmin" src="https://user-images.githubusercontent.com/87447527/153696472-7eda4e74-b873-448e-adfa-115fa1a1e3be.png">
+
+
 ### Ways you could contribute
 - add user auth screen
 - add form for users to add new podcast
