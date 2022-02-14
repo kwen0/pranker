@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 class PodcastList extends React.Component {
     constructor(props) {
@@ -11,13 +12,13 @@ class PodcastList extends React.Component {
 
     render() {
         return <div>
-                <ol>
-                    {this.state.podcasts.map(podcast => (
-                        <li key={podcast.id}>
-                            {podcast.name} {podcast.episodeTitle} {podcast.avgRating}
-                        </li>
+                <ButtonGroup vertical>
+                {this.state.podcasts.map(podcast => (
+                        <Button key={podcast.id}>
+                            {podcast.name} {podcast.episodeTitle}
+                        </Button>
                     ))}
-                </ol>
+                </ButtonGroup>
                 </div>;
     }
 }
