@@ -1,6 +1,8 @@
 import React from "react";
 import PodcastList from "./PodcastList";
 
+import AddPodcast from './components/AddPodcast';
+
 class Landing extends React.Component {
     constructor(props) {
         super(props);
@@ -49,6 +51,7 @@ class Landing extends React.Component {
                 <p>Search for a podcast title below to update the results and see specific podcast rankings!</p>
                 <input type="text" placeholder="Search Podcast Title"></input>
                 <PodcastList podcasts={podcasts}></PodcastList>
+                <AddPodcast />
                 </div>;
         }
     }
