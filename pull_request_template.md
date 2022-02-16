@@ -3,6 +3,7 @@
 
 ## How can others know that your changes do what you say they do? Can you please share some testing steps?
 
+## Screenshots (if user facing change)
 
 ## Checklist before merging
 - [ ] Someone has given this PR an approval and thorough review
