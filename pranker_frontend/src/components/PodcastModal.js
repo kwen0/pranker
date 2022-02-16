@@ -17,21 +17,19 @@ class PodcastModal extends React.Component {
 
     handleClose() {
 
-        console.log("handleClose called: " + this.props.show_modal);
-
-        this.setState({show: !this.props.show_modal});
+        console.log("handleClose called with: " + this.state.show);
+        this.setState({show: !this.state.show});
         // this.state.onClose(this.props.podcast)
-
     }
 
     render() {
-        if (this.props.podcast) {
-            console.log("podcast modal id: " + this.props.podcast.id);
+        if (this.state.podcast) {
+            console.log("podcast modal id: " + this.state.podcast.id);
         }
-        console.log("the show value is: " + this.props.show_modal);
+        console.log("the show value is: " + this.state.show);
 
         return (
-            <Modal show={this.props.show_modal} onHide={this.handleClose}>
+            <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
                     {/* <Modal.Title>{podcast.name} {podcast.episodeTitle}</Modal.Title> */}
                 </Modal.Header>
