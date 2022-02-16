@@ -7,7 +7,6 @@ class PodcastList extends React.Component {
         super(props);
 
         this.state = {
-          podcasts: this.props.podcasts,
           show_podcast_modal: false,
           podcast_to_show: null
         };
@@ -15,26 +14,29 @@ class PodcastList extends React.Component {
 
     }
 
-
-    showPodcastModal (podcast) {
-        // this.setState({
-        //     show_podcast_modal: true,
-        //     podcast_to_show: podcast
-        // });
-        console.log("the podcast clicked: " + podcast.id)
+    togglePodcastModal (podcast) {
+        this.setState({
+            show_podcast_modal: !this.state.show_podcast_modal,
+            podcast_to_show: podcast
+        });
+        // console.log("the podcast clicked: " + podcast.id)
     }
 
     render() {
         return <div>
                 <ButtonGroup vertical>
-                {this.state.podcasts.map(podcast => (
-                        <Button key={podcast.id} onClick={()=> this.showPodcastModal(podcast)}>
+                {this.props.podcasts.map(podcast => (
+                        <Button key={podcast.id} onClick={()=> this.togglePodcastModal(podcast)}>
                             {podcast.name} {podcast.episodeTitle}
                         </Button>
                     ))}
                 </ButtonGroup>
 
-                <PodcastModal show_modal={this.state.show_podcast_modal} podcast={this.state.podcast_to_show}/>
+                <PodcastModal 
+                    // onClose={()=> this.togglePodcastModal} 
+                    show_modal={this.state.show_podcast_modal} 
+                    podcast={this.state.podcast_to_show}
+                />
                 </div>;
     }
 }
