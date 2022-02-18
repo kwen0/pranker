@@ -12,17 +12,11 @@ class PodcastList extends React.Component {
         };
 
         this.button_component = React.createRef();
-        // this.showPodcastModal = this.showPodcastModal.bind(this);
 
     }
 
     togglePodcastModal (podcast) {
-        this.setState({
-            show_podcast_modal: !this.state.show_podcast_modal,
-            podcast_to_show: podcast
-        });
-        this.button_component.current.handleClose();
-        // console.log("the podcast clicked: " + podcast.id)
+        this.button_component.current.togglePodcastModal(podcast);
     }
 
     render() {
@@ -36,7 +30,6 @@ class PodcastList extends React.Component {
                 </ButtonGroup>
 
                 <PodcastModal 
-                    // onClose={()=> this.togglePodcastModal} 
                     show_modal={this.state.show_podcast_modal} 
                     podcast={this.state.podcast_to_show}
                     ref={this.button_component}

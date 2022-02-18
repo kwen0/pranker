@@ -1,5 +1,6 @@
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Modal, Form, Image } from 'react-bootstrap';
 import React from "react";
+import ReactStars from 'react-stars';
 
 class PodcastModal extends React.Component {
 
@@ -8,41 +9,36 @@ class PodcastModal extends React.Component {
 
         this.state = {
           show: props.show_modal,
-        //   onClose: props.onClose,
           podcast: props.podcast
         };
-        this.handleClose = this.handleClose.bind(this)
+        this.togglePodcastModal = this.togglePodcastModal.bind(this)
     
     }
 
-    handleClose() {
-
-        console.log("handleClose called with: " + this.state.show);
-        this.setState({show: !this.state.show});
-        // this.state.onClose(this.props.podcast)
+    togglePodcastModal(podcast) {
+        this.setState({
+            show: !this.state.show,
+            podcast: podcast
+        });
     }
 
     render() {
-        if (this.state.podcast) {
-            console.log("podcast modal id: " + this.state.podcast.id);
+        if (!this.state.podcast) {
+            return null
         }
-        console.log("the show value is: " + this.state.show);
 
         return (
-            <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal show={this.state.show} onHide={this.togglePodcastModal}>
                 <Modal.Header closeButton>
-                    {/* <Modal.Title>{podcast.name} {podcast.episodeTitle}</Modal.Title> */}
+                    <Modal.Title>{this.state.podcast.name} {this.state.podcast.episodeTitle}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Form.Group className="mb-3" controlId="formPodcastName">
-                            {/* <Form.Label>{podcast.name} {podcast.episodeTitle}</Form.Label> */}
-                            <Form.Control type="text" placeholder="Enter podcast title" />
-                        </Form.Group>
-                    </Form>
+                    <h1>{this.state.podcast.name} {this.state.podcast.episodeTitle}</h1>
+                    <Image src="/jre-podcast.jpg" fluid={true} roundedCircle={true}/>
+                    <ReactStars count={10} size={24} color2={'#ffd700'} half={true} value={this.state.podcast.avgRating * 2}/>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={this.handleClose}>
+                    <Button variant="secondary" onClick={this.togglePodcastModal}>
                         Close
                     </Button>
                 </Modal.Footer>
