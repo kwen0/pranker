@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Types;
 import java.util.List;
 
 @Repository
@@ -20,4 +21,12 @@ public class PodRatingJdbcRepository {
         return jdbcTemplate.query("select * from ratings", new BeanPropertyRowMapper<>(PodRating.class));
     }
 
+    public List<PodRating> getPodcastRatingsById(int id) {
+        return jdbcTemplate.query(
+                "select * from ratings where pod_id = ?",
+                new Object[]{id},
+                new int[]{Types.INTEGER},
+                new BeanPropertyRowMapper<>(PodRating.class)
+        );
+    }
 }
