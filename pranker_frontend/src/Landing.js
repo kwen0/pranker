@@ -2,6 +2,9 @@ import React from "react";
 import PodcastList from "./PodcastList";
 
 import AddPodcast from './components/AddPodcast';
+import { Link } from "react-router-dom";
+import Login from "./components/Login"
+import Register from "./components/Register";
 
 class Landing extends React.Component {
     constructor(props) {
@@ -44,15 +47,19 @@ class Landing extends React.Component {
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
-            return <div>
-                <h1>Pranker</h1>
-                <p>The podcast ranker app</p>
+            return  <div>
+                      <h1>Pranker</h1>
+                      <p>The podcast ranker app</p>
 
-                <p>Search for a podcast title below to update the results and see specific podcast rankings!</p>
-                <input type="text" placeholder="Search Podcast Title"></input>
-                <PodcastList podcasts={podcasts}></PodcastList>
-                <AddPodcast />
-                </div>;
+                      <p>Search for a podcast title below to update the results and see specific podcast rankings!</p>
+                      <input type="text" placeholder="Search Podcast Title"></input>
+                      <nav>
+                       <PodcastList podcasts={podcasts}></PodcastList>
+                       <AddPodcast />
+                       <Link to="/login">Login</Link>
+                       <Link to="/register">Register</Link>
+                      </nav>
+                    </div>;
         }
     }
 }

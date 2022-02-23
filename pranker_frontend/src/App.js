@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Landing from './Landing';
+import Login from './components/Login';
+import Register from './components/Register';
+import { Button, Modal, Form } from 'react-bootstrap';
 
 function App() {
   return (
