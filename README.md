@@ -12,6 +12,8 @@ Original Project Planning Doc - https://docs.google.com/document/d/1u40Qy18w2PqT
         - look at pom.xml to view all packages needed to build Pranker
     - Postgres
         - look at package.json to view everything needed to build frontend
+- Hosting
+    - Heroku
 
 ### Setup Application
 1. Clone repo `git clone git@github.com:chumomega/pranker.git`
@@ -27,6 +29,9 @@ Original Project Planning Doc - https://docs.google.com/document/d/1u40Qy18w2PqT
 ##### DB Setup
 - `brew install postgres`
 - `brew services start postgresql` to start postgres
+- check this link to set your env variables
+    - [connect to heroku db](https://medium.com/@vapurrmaid/getting-started-with-heroku-postgres-and-pgadmin-run-on-part-2-90d9499ed8fb)
+    
 - `psql postgres`
 - `create user main_pranker;`
 - `create role app with superuser;`
@@ -108,19 +113,14 @@ values(5, 999, 3, 4, 'fauci and rhonda patrick');
 insert into ratings
 values(6, 998, 3, 4, 'fake doctors and fake news! deplatform this guy');
 ```
+
+#### 
+
 ##### Troubleshooting
 - If you cannot connect to the server, download [PGAdmin](https://www.pgadmin.org/download/)
 - Click on connect server and make sure it looks like the below: 
 <img width="556" alt="pgadmin" src="https://user-images.githubusercontent.com/87447527/153696472-7eda4e74-b873-448e-adfa-115fa1a1e3be.png">
 
-
-### Ways you could contribute
-- add user auth screen
-- add form for users to add new podcast
-- add modal to present podcast in a user friendly way
-- add button to allow users to add a new rating
-- add form for users to add rating
-- ...
 
 
 
