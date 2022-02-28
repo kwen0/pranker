@@ -25,4 +25,18 @@ public class PodRatingJdbcRepository {
                 new BeanPropertyRowMapper<>(PodRating.class)
         );
     }
+
+    public double getAvgPodcastRating(int id) {
+        List<PodRating> ratings = jdbcTemplate.query(
+                "select rating from ratings where pod_id = ?",
+                new Object[]{id},
+                new int[]{Types.INTEGER},
+                new BeanPropertyRowMapper<>(PodRating.class)
+        );
+        double sum = 0;
+        for (PodRating item : ratings) {
+            sum += item.getRating();
+        }
+        return sum/ratings.size();
+    }
 }

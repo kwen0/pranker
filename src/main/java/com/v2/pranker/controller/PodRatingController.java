@@ -42,4 +42,14 @@ public class PodRatingController {
         }
     }
 
+    @GetMapping("/avgpodcastrating/{podcast_id}")
+    public ResponseEntity <Double> getAvgPodcastRating(@PathVariable("podcast_id") int podcast_id) {
+        try {
+            double avgPodcastRating = podRepo.getAvgPodcastRating(podcast_id);
+
+            return new ResponseEntity<>(avgPodcastRating, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
