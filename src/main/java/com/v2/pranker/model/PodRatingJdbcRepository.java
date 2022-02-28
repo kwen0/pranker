@@ -13,11 +13,11 @@ public class PodRatingJdbcRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<PodRating> getAllPodcastRatings() {
+    public List<PodRating> getAllRatings() {
         return jdbcTemplate.query("select * from ratings", new BeanPropertyRowMapper<>(PodRating.class));
     }
 
-    public List<PodRating> getPodcastRatingsById(int id) {
+    public List<PodRating> getRatingsById(int id) {
         return jdbcTemplate.query(
                 "select * from ratings where pod_id = ?",
                 new Object[]{id},
@@ -26,13 +26,8 @@ public class PodRatingJdbcRepository {
         );
     }
 
-    public double getAvgPodcastRating(int id) {
-        List<PodRating> ratings = jdbcTemplate.query(
-                "select rating from ratings where pod_id = ?",
-                new Object[]{id},
-                new int[]{Types.INTEGER},
-                new BeanPropertyRowMapper<>(PodRating.class)
-        );
+    public double getAvgRating(int id) {
+        List<PodRating> ratings = getRatingsById(id);
         double sum = 0;
         for (PodRating item : ratings) {
             sum += item.getRating();

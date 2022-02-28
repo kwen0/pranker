@@ -14,12 +14,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class PodRatingController {
     @Autowired
-    private PodRatingJdbcRepository podRepo;
+    private PodRatingJdbcRepository ratingsRepo;
 
-    @GetMapping("/podcastratings")
+    @GetMapping("/ratings")
     public ResponseEntity<List<PodRating>> getAllPodcastRatings() {
         try {
-            List<PodRating> podcastRatings = podRepo.getAllPodcastRatings();
+            List<PodRating> podcastRatings = ratingsRepo.getAllRatings();
 
             if (podcastRatings.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -31,10 +31,10 @@ public class PodRatingController {
         }
     }
 
-    @GetMapping("/podcastratings/{podcast_id}")
+    @GetMapping("/ratings/{podcast_id}")
     public ResponseEntity<List<PodRating>> getPodcastsRatingsById(@PathVariable("podcast_id") int podcast_id) {
         try {
-            List<PodRating> podcastRatingsById = podRepo.getPodcastRatingsById(podcast_id);
+            List<PodRating> podcastRatingsById = ratingsRepo.getRatingsById(podcast_id);
 
             return new ResponseEntity<>(podcastRatingsById, HttpStatus.OK);
         } catch (Exception e) {
@@ -42,10 +42,10 @@ public class PodRatingController {
         }
     }
 
-    @GetMapping("/avgpodcastrating/{podcast_id}")
+    @GetMapping("/avgrating/{podcast_id}")
     public ResponseEntity <Double> getAvgPodcastRating(@PathVariable("podcast_id") int podcast_id) {
         try {
-            double avgPodcastRating = podRepo.getAvgPodcastRating(podcast_id);
+            double avgPodcastRating = ratingsRepo.getAvgRating(podcast_id);
 
             return new ResponseEntity<>(avgPodcastRating, HttpStatus.OK);
         } catch (Exception e) {
