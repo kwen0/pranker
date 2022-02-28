@@ -1,6 +1,5 @@
 package com.v2.pranker.controller;
 
-import com.v2.pranker.model.Pod;
 import com.v2.pranker.model.PodRating;
 import com.v2.pranker.model.PodRatingJdbcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +38,8 @@ public class PodRatingController {
 
             return new ResponseEntity<>(podcastRatingsById, HttpStatus.OK);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 }

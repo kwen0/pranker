@@ -13,10 +13,6 @@ public class PodRatingJdbcRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<Pod> getAllPodcasts() {
-        return jdbcTemplate.query("select * from POD", new BeanPropertyRowMapper<>(Pod.class));
-    }
-
     public List<PodRating> getAllPodcastRatings() {
         return jdbcTemplate.query("select * from ratings", new BeanPropertyRowMapper<>(PodRating.class));
     }
