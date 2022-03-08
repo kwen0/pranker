@@ -4,12 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import java.sql.PreparedStatement;
-import java.sql.DriverManager;
-import java.sql.Connection;
 import java.sql.Types;
 import java.util.List;
-import java.sql.SQLException;
 
 @Repository
 public class PodRatingJdbcRepository {
@@ -40,26 +36,9 @@ public class PodRatingJdbcRepository {
         return avgRating;
     }
 
-    private String url = "jdbc:postgresql://localhost:5432/pranker";
-    private String user = "main_pranker";
-    private String password = "prankerpw";
-
-    public Connection connect() throws SQLException {
-        return DriverManager.getConnection(url, user, password);
-    }
-
     public void updateAvgRating(int id, double avgRating) {
-        String SQL = "UPDATE pod " + "SET avg_rating = ? " + "WHERE id = ?";
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
-
-            pstmt.setDouble(1, avgRating);
-            pstmt.setInt(2, id);
-
-            pstmt.executeUpdate();
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        this.jdbcTemplate.update(
+            "update pod set avg_rating = ? where id = ?",
+                avgRating, id);
     }
 }
